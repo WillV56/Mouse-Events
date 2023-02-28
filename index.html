@@ -25,7 +25,9 @@
 <body>
     <div class="dot"></div>
 
-    <div class="container"></div>
+    <div class="container">
+        <p class="point"></p>
+    </div>
 
     <script>
         const container = document.querySelector('.container')
@@ -37,8 +39,12 @@
         console.log(e.clientX)
 
         console.log(e.offsetX)
+
+        const point = document.querySelector('.point')
+        point.innerHTML(e.offsetX)
         });
 
+        
         
     </script>
 </body>
