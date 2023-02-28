@@ -12,6 +12,7 @@
                 background-color: aqua;
                 width: 50px;
                 height: 50px;
+                position: absolute;
         }
 
         .container 
@@ -43,6 +44,10 @@
 
         const point = document.querySelector('.point')
         point.innerHTML = e.offsetX;
+
+        point.style.left = offsetX;
+        point.style.top = offsetY;
+
         });
 
         
