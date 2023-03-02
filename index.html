@@ -9,6 +9,19 @@
         .dot 
         {
                 border-radius: 50%;
+                background-color: yellow;
+                width: 50px;
+                height: 50px;
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                transition: all 1s ease-in-out;
+                text-align: center;
+        }
+
+        .dot2 
+        {
+                border-radius: 50%;
                 background-color: aqua;
                 width: 50px;
                 height: 50px;
@@ -16,28 +29,52 @@
                 top: 0px;
                 left: 0px;
                 transition: all 1s ease-in-out;
+                text-align: center;
+        }
+
+        .dot3 
+        {
+                border-radius: 50%;
+                background-color: rgb(238, 10, 10);
+                width: 50px;
+                height: 50px;
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                transition: all 1s ease-in-out;
+                text-align: center;
         }
 
         .container 
         {
-            background-color: blueviolet;
+            background-color: rgb(142, 243, 212);
             width: 500px;
             height: 500px;
             color: white;
         }
 
-        .pointer {
-            text-align: center;
-        }
+    
     </style>
 </head>
 <body>
+
+    
+
     <div class="dot"></div>
+
+    <div class="dot2"></div>
+
+    <div class="dot3"></div>
 
     <div class="container">
         <p class="point"></p>
     </div>
 
+    <h1>Lab 4: Mouse Events</h1>
+
+    <h3>Yellow is the X axis</h3>
+
+    <h3>Blue is the Y axis</h3>
     <script>
         const container = document.querySelector('.container')
         container.addEventListener('click',(e)=>{
@@ -49,13 +86,26 @@
 
         console.log(e.offsetX)
 
+        console.log(e.offsetY)
+
         const dot = document.querySelector('.dot')
         dot.innerHTML = e.offsetX;
 
+        const dot2 = document.querySelector('.dot2')
+        dot2.innerHTML = e.offsetY;
+
+        const dot3 = document.querySelector('.dot3')
+
         dot.style.left = e.offsetX + 'px';
-        dot.style.top = e.offsetY + 'px';
+
+        dot2.style.top = e.offsetY + 'px';
+
+        dot3.style.left = e.offsetX + 'px';
+        dot3.style.top = e.offsetY + 'px';
 
         console.log( dot.style.left)
+
+        console.log( dot2.style.right)
         });
 
         
