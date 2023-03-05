@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mouse Events</title>
-    <style>
-        .dot 
-        {
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Mouse Events</title>
+        <style>
+            /* TB: In my demos I use a single file for ease of reading, but assignments should use the convention
+            of searate css and JS files please.
+            */
+
+            * {
+                box-sizing: border-box;
+            }
+
+            /* TB: consolidate CSS where possible 
+               this save a bunch of lines of code 
+             */
+            .dot,
+            .dot2,
+            .dot3 {
+                display: grid;
+                place-items: center;
                 border-radius: 50%;
                 background-color: yellow;
                 width: 50px;
@@ -16,100 +30,66 @@
                 top: 0px;
                 left: 0px;
                 transition: all 1s ease-in-out;
-                text-align: center;
-        }
+            }
 
-        .dot2 
-        {
-                border-radius: 50%;
+            /* TB: see, only the stuff that is diff */
+            .dot2 {
                 background-color: aqua;
-                width: 50px;
-                height: 50px;
-                position: absolute;
-                top: 0px;
-                left: 0px;
-                transition: all 1s ease-in-out;
-                text-align: center;
-        }
+            }
 
-        .dot3 
-        {
-                border-radius: 50%;
+            .dot3 {
                 background-color: rgb(238, 10, 10);
-                width: 50px;
-                height: 50px;
-                position: absolute;
-                top: 0px;
-                left: 0px;
-                transition: all 1s ease-in-out;
-                text-align: center;
-        }
+            }
 
-        .container 
-        {
-            background-color: rgb(142, 243, 212);
-            width: 500px;
-            height: 500px;
-            color: white;
-        }
+            .container {
+                background-color: rgb(142, 243, 212);
+                width: 500px;
+                height: 500px;
+            }
+        </style>
+    </head>
 
-    
-    </style>
-</head>
-<body>
+    <!-- TB: Just did some general reorg to make it easier to read -->
 
-    
+    <body>
+        <div class="container">
+            <!-- if using offset, put them 
+                inside the container -->
+            <div class="dot"></div>
+            <div class="dot2"></div>
+            <div class="dot3"></div>
+        </div>
 
-    <div class="dot"></div>
+        <h1>Lab 4: Mouse Events</h1>
+        <h3>Yellow is the X axis</h3>
+        <h3>Blue is the Y axis</h3>
 
-    <div class="dot2"></div>
+        <script>
+            const container = document.querySelector(".container");
+            container.addEventListener("click", (e) => {
+                const dot = document.querySelector(".dot");
+                const dot2 = document.querySelector(".dot2");
+                const dot3 = document.querySelector(".dot3");
 
-    <div class="dot3"></div>
+                console.log("The event object ", e);
+                console.log("e.target: ", e.target);
+                console.log("e.clientX: ", e.clientX);
+                console.log("===============");
+                console.log("e.offsetX: ", e.offsetX);
+                console.log("e.offsetY: ", e.offsetY);
 
-    <div class="container">
-        <p class="point"></p>
-    </div>
+                dot.innerHTML = e.offsetX;
+                dot.style.left = e.offsetX + "px";
 
-    <h1>Lab 4: Mouse Events</h1>
+                dot2.innerHTML = e.offsetY;
+                dot2.style.top = e.offsetY + "px";
 
-    <h3>Yellow is the X axis</h3>
+                dot3.style.left = e.offsetX + "px";
+                dot3.style.top = e.offsetY + "px";
 
-    <h3>Blue is the Y axis</h3>
-    <script>
-        const container = document.querySelector('.container')
-        container.addEventListener('click',(e)=>{
-        console.log(e);
-        
-        console.log(e.target);
-
-        console.log(e.clientX)
-
-        console.log(e.offsetX)
-
-        console.log(e.offsetY)
-
-        const dot = document.querySelector('.dot')
-        dot.innerHTML = e.offsetX;
-
-        const dot2 = document.querySelector('.dot2')
-        dot2.innerHTML = e.offsetY;
-
-        const dot3 = document.querySelector('.dot3')
-
-        dot.style.left = e.offsetX + 'px';
-
-        dot2.style.top = e.offsetY + 'px';
-
-        dot3.style.left = e.offsetX + 'px';
-        dot3.style.top = e.offsetY + 'px';
-
-        console.log( dot.style.left)
-
-        console.log( dot2.style.right)
-        });
-
-        
-        
-    </script>
-</body>
+                console.log(dot.style.left);
+                console.log(dot2.style.top);
+            });
+        </script>
+    </body>
 </html>
